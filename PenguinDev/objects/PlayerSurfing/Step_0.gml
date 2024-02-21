@@ -10,14 +10,11 @@ if(keyboard_check(ord("D")))
 
 	moveX -= 2
 }
-if(y > 1500&& direction  > 100)
+if(y > 1600&& direction)
 {
-	y = 0 - (y - 1500);
+	instance_destroy();
 }
-if(y < 0 && direction < 100)
-{
-	y = -y + 1500;
-}
+
 
 if(direction > 95 && direction < 265)
 {
@@ -25,11 +22,21 @@ if(direction > 95 && direction < 265)
 }
 if(direction < 180)
 {
-	speed = 8 - (.5*(direction/90));
+	speed = s - (2*(direction/90));
 }
 else
 {
-	speed = 8 - (.5*((direction-360)/90));
+	speed = s - (8*((direction-360)/90));
+}
+if(boost)
+{
+	if(s>9)
+		s -= .1;
+	else 
+	{
+		s = 9;
+		boost = false;
+	}
 }
 
 direction += moveX

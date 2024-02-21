@@ -1,4 +1,4 @@
-speed = 9;
-
+s = 9;
+boost = false;
 
 

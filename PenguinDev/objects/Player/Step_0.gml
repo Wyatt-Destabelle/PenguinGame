@@ -1,8 +1,8 @@
 
 moveX = 0;
 moveY = 0;
-
-
+if(active)
+{
 if(keyboard_check(ord("W")))
 {
 	
@@ -47,6 +47,7 @@ if(moveX != 0 || moveY != 0)
 else
 {
 	sprite_index = standingSprites[forwardBackward];
+}
 }
 depth = -y;
 

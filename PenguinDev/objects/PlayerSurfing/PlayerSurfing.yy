@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "PlayerObjs",
+    "path": "folders/Objects/PlayerObjs.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -30,8 +30,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Surfer",
-    "path": "sprites/Surfer/Surfer.yy",
+    "name": "playerSurfing",
+    "path": "sprites/playerSurfing/playerSurfing.yy",
   },
   "spriteMaskId": null,
   "visible": true,
