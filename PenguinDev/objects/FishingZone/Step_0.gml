@@ -1,5 +1,5 @@
-if(global.fish == 1)
-	instance_destroy();
+if(global.gamePhase != 3)
+	return;
 
 if(place_meeting(x+50,y,Player) || place_meeting(x-50,y,Player) || place_meeting(x,y+50,Player) || place_meeting(x,y-50,Player))
 {
@@ -36,7 +36,7 @@ if(triggerable)
 function drawHint()
 {
 	hintID = instance_create_layer(x-200,y-350,"text",textbox_obj);
-	hintID.sprite_index = textbox[0];
+	hintID.sprite_index = SpriteFish;
 	hint = 1;
 }
 

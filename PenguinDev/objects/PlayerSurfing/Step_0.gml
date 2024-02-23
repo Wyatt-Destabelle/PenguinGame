@@ -22,22 +22,14 @@ if(direction > 95 && direction < 265)
 }
 if(direction < 180)
 {
-	speed = s - (2*(direction/90));
+	s = s - (.05*(direction/90) +.01);
 }
 else
 {
-	speed = s - (8*((direction-360)/90));
+	s = s - (.11*((direction-360)/90));
 }
-if(boost)
-{
-	if(s>9)
-		s -= .1;
-	else 
-	{
-		s = 9;
-		boost = false;
-	}
-}
+speed = s;
+
 
 direction += moveX
 image_angle += moveX

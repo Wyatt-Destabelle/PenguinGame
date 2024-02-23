@@ -1,55 +1,41 @@
-if(place_meeting(x+50,y,Player))
+if(place_meeting(x-50,y,Player) && !text)
 {
-	triggerable = 1;
-	if(!hint && !text)
-		drawHint();
-	
+hint = 1;
 }
-else
+else 
 {
-	
-	triggerable = 0;
 	hint = 0;
-	
-	if(hintID)
-		destroyHint();
-	if(textID)
-		destroyText();
-	text = 0;
-	sprite_index = surferIdle;
 }
 
-if(triggerable)
+if(hint && !text)
 {
-	if(keyboard_check(vk_space))
+	if(keyboard_check_pressed(vk_space))
 	{
-		if(hintID)
-			destroyHint();
-		if(textID)
-			destroyText();
-		drawText();
+		sprite_index = surferTalk;
+		hint = 0;
+		text = 1; 
+		dialogueBox = instance_create_depth(x,y,0,dialogue_GUI);
+		if(global.gamePhase == 6)
+		{
+			dialogueBox.dialogueArray = dialoguePreSurf;
+			global.gamePhase = 7;
+		}
+		if(global.gamePhase == 8)
+		{
+			global.gamePhase = 9;
+			dialogueBox.dialogueArray = ["THAT", "WAS", "GNARLY BRO!!!","As agreed, the fireworks are yours."];
+		}
+		else if(array_length(dialogueBox.dialogueArray) == 0)
+			dialogueBox.dialogueArray = ["Hang loose brah!"];
 	}
 }
-
-function drawHint()
+if(text)
 {
-	hintID = instance_create_layer(x-100,y-250,"text",textbox_obj);
-	hintID.sprite_index = textbox[0];
-	hint = 1;
+	
+	if(!global.dialogue)
+	{
+		text = 0;
+		sprite_index = surferIdle;
+	}
 }
-function drawText()
-{
-	sprite_index = surferTalk;
-	textID = instance_create_layer(x-100,y-250,"text",textbox_obj);
-	textID.sprite_index = Sprite12;
-	text = 1;
-}
-
-function destroyHint()
-{
-	instance_destroy(hintID);
-}
-function destroyText()
-{
-	instance_destroy(textID);
-}
+	

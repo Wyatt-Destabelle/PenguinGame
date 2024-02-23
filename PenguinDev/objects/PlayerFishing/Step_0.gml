@@ -9,11 +9,14 @@ if(complete)
 {
 	if(won)
 	{
-		global.fish = 1;
-		instance_create_depth(x,y,0,Wave);
+		global.gamePhase = 4;
+		sprite_index = doneFishing;
 	}
+	else
+	{
 	instance_create_depth(x,y,0,Player);
 	instance_destroy();
+	}
 }
 
 

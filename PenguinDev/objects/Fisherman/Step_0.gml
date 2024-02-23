@@ -1,55 +1,45 @@
-if(place_meeting(x+50,y,Player))
+if(place_meeting(x+50,y,Player) && !text)
 {
-	triggerable = 1;
-	if(!hint && !text)
-		drawHint();
-	
+hint = 1;
 }
-else
+else 
 {
-	
-	triggerable = 0;
 	hint = 0;
-	
-	if(hintID)
-		destroyHint();
-	if(textID)
-		destroyText();
-	text = 0;
-	sprite_index = FisherSleep;
 }
 
-if(triggerable)
+if(hint && !text)
 {
-	if(keyboard_check(vk_space))
+	if(keyboard_check_pressed(vk_space))
 	{
-		if(hintID)
-			destroyHint();
-		if(textID)
-			destroyText();
-		drawText();
+		hint = 0;
+		text = 1; 
+		dialogueBox = instance_create_depth(x,y,0,dialogue_GUI);
+		sprite_index = FisherTalk;
+		if(global.gamePhase == 4)
+		{
+			
+			dialogueBox.dialogueArray = ["What? Oh!!","Great job Pip! I can't wait to eat it!","Wake me up when the food is ready!"];
+			
+		}
+		else if(global.gamePhase == 2)
+		{
+			dialogueBox.dialogueArray = ["Wh.... what!?", "!!!! !!! !!!","The fish got stolen? Well.... I'm too tired to get another...", "Oh I know, how about you do it Pip!", "Go down to the end of the pier and cast your line!","Press space to cast your line, then hit the spacebar when the red circle is inside the ring!", "Wait what's a space bar?","I'll uhhh... supervise...."];
+			global.gamePhase = 3;
+		}
+		else
+		{
+			sprite_index = FisherSleep;
+			dialogueBox.dialogueArray = ["ZZZZZZZZZZZZZZZZZ","zzzzZZZZZzzzzZZZZ"];
+		}
 	}
 }
-
-function drawHint()
+if(text)
 {
-	hintID = instance_create_layer(x-100,y-250,"text",textbox_obj);
-	hintID.sprite_index = textbox[0];
-	hint = 1;
+	if(!global.dialogue)
+	{
+		text = 0;
+		sprite_index = FisherSleep;
+	}
+	
 }
-function drawText()
-{
-	sprite_index = FisherTalk;
-	textID = instance_create_layer(x-100,y-250,"text",textbox_obj);
-	textID.sprite_index = Sprite12;
-	text = 1;
-}
-
-function destroyHint()
-{
-	instance_destroy(hintID);
-}
-function destroyText()
-{
-	instance_destroy(textID);
-}
+	

@@ -1,3 +1,6 @@
+if(global.gamePhase != 7)
+	return;
+
 
 if(place_meeting(x+50,y,Player) || place_meeting(x-50,y,Player) || place_meeting(x,y+50,Player) || place_meeting(x,y-50,Player))
 {
@@ -27,7 +30,7 @@ if(triggerable)
 function drawHint()
 {
 	hintID = instance_create_layer(x-200,y-350,"text",textbox_obj);
-	hintID.sprite_index = Sprite17;
+	hintID.sprite_index = SpriteSurf;
 	hint = 1;
 }
 

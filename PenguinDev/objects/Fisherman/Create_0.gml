@@ -4,4 +4,4 @@ hintID = 0;
 text = 0;
 textID = 0;
 textbox = [Sprite17];
-depth = -y;
+depth = -y - 250;

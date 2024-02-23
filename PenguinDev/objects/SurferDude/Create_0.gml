@@ -4,4 +4,6 @@ hintID = 0;
 text = 0;
 textID = 0;
 textbox = [Sprite17];
-depth = -y;
+dialogueStart = ["Hang loose little Pip!"];
+dialoguePreSurf = ["You want my fireworks? Hardcore, little Pip!","Though to get them, you gotta prove your brodaciousness.","If you can grab that board and catch a wave to shore- these fireworks are all yours brah!","Use A and D to ride the wave- and watch out for rocks brody.","Go shred that gnar, little Pip!"];
+depth = -y - 200;

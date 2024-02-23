@@ -1,7 +1,7 @@
 
 moveX = 0;
 moveY = 0;
-if(active)
+if(!global.dialogue)
 {
 if(keyboard_check(ord("W")))
 {
@@ -9,7 +9,9 @@ if(keyboard_check(ord("W")))
 	moveY = -1;
 	characterDirection = 2;
 	forwardBackward = 1;
-		if(place_meeting(x,y-5,collidable))
+		if(!place_meeting(x,y-5,IslandHitbox))
+		moveY = 0;
+		if(place_meeting(x-10,y-15,collidable) && place_meeting(x+10,y-15,collidable))
 		moveY = 0;
 
 }
@@ -18,21 +20,27 @@ else if(keyboard_check(ord("S")))
 	moveY = 1;
 	characterDirection = 3;
 	forwardBackward = 0;
-	if(place_meeting(x,y+5,collidable))
+	if(!place_meeting(x,y+305,IslandHitbox))
 		moveY = 0;
-	
+	if(place_meeting(x-10,y+15,collidable) && place_meeting(x+10,y+15,collidable))
+		moveY = 0;
 }
 if(keyboard_check(ord("D")))
 {
 	moveX = 1;
 	characterDirection = 0;
+	if(!place_meeting(x+305,y,IslandHitbox))
+		moveX = 0;
 	if(place_meeting(x+15,y,collidable))
 		moveX = 0;
 }
+
 else if(keyboard_check(ord("A")))
 {
 	moveX = -1;
 	characterDirection = 1;
+	if(!place_meeting(x-305,y,IslandHitbox))
+		moveX = 0;
 	if(place_meeting(x-15,y,collidable))
 		moveX = 0;
 }
